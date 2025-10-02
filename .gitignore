@@ -1,0 +1,13 @@
+*.zip
+*.pyc
+__pycache__/
+venv_fyp/
+venv_fyp_now/
+venv_stable_310/
+Papers for Referrence/
+Latest_Implementation/
+frontend/
+microexp.pyc
+Online Datasets/
+
+
