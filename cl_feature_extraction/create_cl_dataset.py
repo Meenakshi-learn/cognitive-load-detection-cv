@@ -3,7 +3,7 @@ import os
 import cv2
 import numpy as np
 import pandas as pd
-from cl_feature_logic import extract_head_and_eye_features # Import the new logic
+from cl_feature_logic import extract_cl_features # Import the new logic
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from data_preprocessing import DATA_PATHS # This now correctly finds the file in the parent folder
@@ -46,7 +46,7 @@ def generate_cl_dataset():
         if img is None: continue
 
         # 1. Extract geometric features (Head Pose & EAR)
-        cl_features = extract_head_and_eye_features(img)
+        cl_features = extract_cl_features(img)
         
         if cl_features is not None:
             
@@ -66,8 +66,8 @@ def generate_cl_dataset():
             row = {
                 'file_path': item['path'],
                 'true_label': item['true_label'],
-                'Head_Yaw': cl_features['yaw'],
-                'Head_Pitch': cl_features['pitch'],
+                'Head_Yaw': cl_features['nose_yaw_proxy'],
+                #'Head_Pitch': cl_features['pitch'],
                 'EAR': cl_features['ear'],
                 # Add the 9 emotion scores as a list or separate columns
             }
